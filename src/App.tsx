@@ -1,20 +1,36 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function App() {
-  const [counter, setCounter] = useState(0);
+  const [jocke, setJocke] = useState<string>("this is a place holder");
+  const [needJocke, setNeedJocke] = useState<boolean>(true);
+
+  const getJocke = async () => {
+    const response = await fetch(
+      "https://sv443.net/jokeapi/v2/joke/Programming?type=single"
+    );
+    const data = await response.json();
+    data.joke && setJocke(data.joke);
+  };
+
+  useEffect(() => {
+    getJocke();
+  }, [needJocke]);
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="container w-[500px] h-[500px] bg-gradient-to-r from-blue-200  via-purple-300 to-pink-400 rounded-xl shadow-lg flex flex-col justify-center items-center">
-        <h1 className="text-white text-5xl">{counter}</h1>
+    <div className="flex justify-center items-center h-screen bg-slate-50">
+      <div className="bg-gradient-to-r from-indigo-600 via-purple-700 to-pink-600 h-[500px] w-[800px] rounded-3xl shadow-2xl flex justify-center  p-8 flex-col items-center">
+        <h1 className="text-4xl font-poppins font-bold text-white mt-5 text-center  ">
+          Joke Generator Using React and Joke API
+        </h1>
         <button
-          className="text-white text-3xl bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 p-4 mt-5 rounded-lg"
-          onClick={() => {
-            setCounter(counter + 1);
-          }}
+          className="bg-white font-poppins text-indigo-600 hover:bg-indigo-600 hover:text-white text-3xl mt-4 rounded-lg p-2 w-[200px]"
+          onClick={() => setNeedJocke(!needJocke)}
         >
-          Increase
+          Click
         </button>
+
+        <h1 className="text-2xl font-poppins font text-white mt-5 text-center  ">
+          {jocke}
+        </h1>
       </div>
     </div>
   );

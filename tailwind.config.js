@@ -7,6 +7,9 @@ export default {
         lightblue: "#ADD8E6", // Custom lightblue color
         lightgreen: "#90EE90", // Custom lightgreen color
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"], // Add Poppins font family
+      },
     },
   },
   plugins: [],
