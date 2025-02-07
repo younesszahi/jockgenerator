@@ -7,7 +7,7 @@ Fetches random programming jokes from the Joke API.
 Button to fetch a new joke.
 Responsive, modern design powered by Tailwind CSS.
 Styled with Poppins Google Font for a sleek appearance.
-![Joke Generator Screenshot](assets/screenshot.png)
+![Joke Generator Screenshot](https://github.com/younesszahi/jockgenerator/blob/main/assets/screenshoot.png)
 
 
 Getting Started
